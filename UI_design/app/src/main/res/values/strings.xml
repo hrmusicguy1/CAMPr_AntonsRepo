@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">CAMPr</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="pet_name">Enter pet\'s name</string>
+    <string name="pet_gender">Enter pet\'s gender</string>
+    <string name="pet_info">Enter brief description</string>
+    <string name="listed_pets">Listed Pets</string>
+    <string name="list_new_pet">List new pet</string>
+    <string name="view_pet">Pet\'s profile</string>
+
+    <string-array name="species">
+        <item>Dog</item>
+        <item>Cat</item>
+        <item>Bird</item>
+        <item>Fish</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="breeds">
+        <item>Retrievers (Labrador)</item>
+        <item>German Shepherd Dogs	</item>
+        <item>Retrievers (Golden)</item>
+        <item>French Bulldogs</item>
+        <item>Beagles</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="age">
+        <item>Below 3 months</item>
+        <item>3 months to 1 year</item>
+        <item>1 year to 3 years</item>
+        <item>Above 3 years</item>
+    </string-array>
+
+    <string-array name="color">
+        <item>Black</item>
+        <item>White</item>
+        <item>Brown</item>
+        <item>Grey</item>
+        <item>Others</item>
+    </string-array>
+
+    <string-array name="size">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+
+    <string-array name="adoption_fee">
+        <item>Below $50</item>
+        <item>$50 to $100</item>
+        <item>Above $100</item>
+    </string-array>
+    <string name="edit_pet_confirm">Save</string>
+    <string name="edit_pet_cancel">Cancel</string>
+    <string name="apply_dialog">APPLY</string>
+    <string name="cancel_dialog">Cancel</string>
+    <string name="apply_msg">Enter an application message (Optional)</string>
+
+</resources>
