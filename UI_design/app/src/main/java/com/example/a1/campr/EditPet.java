@@ -26,6 +26,9 @@ public class EditPet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pets);
 
+        ImageView edit = findViewById(R.id.edit_pet);
+        edit.setVisibility(View.GONE);
+
         pet = getIntent().getParcelableExtra("parcel_data");
         pet = PetsFragment.myPets.get(pet.getPetId());
         ImageView image = findViewById(R.id.imageView);

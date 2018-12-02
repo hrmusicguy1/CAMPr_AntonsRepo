@@ -59,5 +59,6 @@
     <string name="apply_dialog">APPLY</string>
     <string name="cancel_dialog">Cancel</string>
     <string name="apply_msg">Enter an application message (Optional)</string>
+    <string name="application_confirm">Confirm</string>
 
 </resources>

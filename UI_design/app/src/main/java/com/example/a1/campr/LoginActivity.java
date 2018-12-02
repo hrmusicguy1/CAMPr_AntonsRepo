@@ -124,11 +124,10 @@ public class LoginActivity extends AppCompatActivity {
         user1.listedPets.add(new Pets("Lizzy", "Female", "Eats bugs and sells car insurance", "p7", "0", pic));
 
         user1.listedPets.get(0).applicantId.put("2", "hello");
-        LoginActivity.myData.dataUsers.get(1).userName = "Test 2";
-        LoginActivity.myData.dataUsers.get(2).userName = "Anton";
-        LoginActivity.myData.dataUsers.get(3).userName = "Test 4";
-        LoginActivity.myData.dataUsers.get(4).userName = "Test 5";
-
+        user1.userName = "Alf Petrovich";
+        user1.userCity = "Chernobyl";
+        user1.userEmail = "DEMO_1@email.com";
+        user1.userContact = "Alf Petrovich\nnelifi@mail.ru\n224-228-3125\nCall or text after 4pm";
 
         //create lister with 2 animals listed
         User user2 = myData.dataUsers.get(1);
@@ -141,6 +140,11 @@ public class LoginActivity extends AppCompatActivity {
         User user3 = myData.dataUsers.get(2);
         pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet10);
         user3.listedPets.add(new Pets("Ratatouille", "Male", "Chef", "p10", "2", pic));
+
+        user3.userName = "Kalina Lalova";
+        user3.userContact = "Kalina Lalova\nklalova@ucsd.edu\n111-111-1111\nCall me whenever";
+        user3.userCity = "Dublin, CA";
+        user3.userEmail = "klalova@ucsd.edu";
 
 
         //load all listed animals from all existing listers to local variable; skip the ones that were previously swiped

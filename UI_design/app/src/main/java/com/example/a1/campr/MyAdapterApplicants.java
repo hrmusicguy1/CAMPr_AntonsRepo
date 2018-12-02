@@ -34,10 +34,13 @@ public class MyAdapterApplicants extends RecyclerView.Adapter<MyAdapterApplicant
         }
 
         public void onClick(View v) {
+            TextView textView = v.findViewById(R.id.applicants);
+            String approved = textView.getText().toString();
             TextView id = v.findViewById(R.id.pet_id);
             String key = id.getText().toString();
             Intent intent = new Intent(v.getContext(), ViewApplicantActivity.class);
             intent.putExtra("user_id", key);
+            intent.putExtra("approved", approved);
             v.getContext().startActivity(intent);
         }
     }
@@ -68,7 +71,7 @@ public class MyAdapterApplicants extends RecyclerView.Adapter<MyAdapterApplicant
     public void onBindViewHolder(MyAdapterApplicants.ViewHolder holder, final int position) {
         final User user = values.get(position);
         holder.txtHeader.setText(user.userName);
-        holder.txtFooter.setText(user.userID);
+        holder.txtFooter.setText(user.userCity);
         //holder.txtFooter.setText(pet.getGender());
         holder.txtId.setText(user.userID);
         //holder.petPicture.setImageBitmap(pet.getPetPic());

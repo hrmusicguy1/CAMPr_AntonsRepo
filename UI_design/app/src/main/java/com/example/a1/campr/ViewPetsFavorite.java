@@ -40,8 +40,8 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
         ImageView image = findViewById(R.id.imageView);
         image.setImageBitmap(pet.getPetPic());
 
-        String applied_value = getIntent().getExtras().getString("applied_value");
-        if(!applied_value.equals("APPLIED")) {
+        final String applied_value = getIntent().getExtras().getString("applied_value");
+        if(!applied_value.equals("APPLIED") && !applied_value.equals("APPROVED") && !applied_value.equals("DECLINED")) {
 
             Button remove = findViewById(R.id.button_right);
             remove.setText("Remove");
@@ -67,6 +67,12 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
             });
         }
         else {
+            if(applied_value.equals("APPROVED")) {
+                int owner = Integer.parseInt(pet.getOwnerId());
+                info.setSingleLine(false);
+                info.setText(info.getText().toString() + "\n\n" + LoginActivity.myData.dataUsers.get(owner).userContact);
+            }
+
             Button remove = findViewById(R.id.button);
             remove.setText("Remove");
             remove.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +84,9 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
                     //remove from lister's pet arraylist
                     int index = LoginActivity.myData.dataUsers.get(Integer.parseInt(pet.getOwnerId())).listedPets.indexOf(pet);
                     LoginActivity.myData.dataUsers.get(Integer.parseInt(pet.getOwnerId())).listedPets.get(index).applicantId.remove(Integer.toString(LoginActivity.currentUser));
+                    if(applied_value.equals("APPROVED")) {
+                        LoginActivity.myData.dataUsers.get(Integer.parseInt(pet.getOwnerId())).listedPets.get(index).approved = false;
+                    }
                     FavoriteFragment.recyclerView.getAdapter().notifyDataSetChanged();
                     finish();
                 }
@@ -103,6 +112,7 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
         AdopterActivity.myChosenPets.put(pet.getPetId(), pet);
         int index = LoginActivity.myData.dataUsers.get(Integer.parseInt(pet.getOwnerId())).listedPets.indexOf(pet);
         LoginActivity.myData.dataUsers.get(Integer.parseInt(pet.getOwnerId())).listedPets.get(index).applicantId.put(Integer.toString(LoginActivity.currentUser), message.getText().toString());
+        LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).appliedPets.put(pet.getPetId(), "applied");
         FavoriteFragment.recyclerView.getAdapter().notifyDataSetChanged();
         finish();
     }

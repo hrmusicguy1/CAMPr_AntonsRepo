@@ -92,24 +92,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         if (size > 0) {
             holder.txtApplication.setText(Integer.toString(size));
         }*/
-        if (pet.applicantId.size() > 0) {
-            if (pet.applicantId.size() == 1) {
-                holder.txtApplication.setText("         " + Integer.toString(pet.applicantId.size()) + "\nAPPLICANT");
-            } else {
-                holder.txtApplication.setText("          " + Integer.toString(pet.applicantId.size()) + " APPLICANTS");
-            }
-
-            holder.txtApplication.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(), ApplicantsActivity.class);
-                    intent.putExtra("pet_id", pet.getPetId());
-                    view.getContext().startActivity(intent);
+        if(pet.approved == false) {
+            if (pet.applicantId.size() > 0) {
+                if (pet.applicantId.size() == 1) {
+                    holder.txtApplication.setText("         " + Integer.toString(pet.applicantId.size()) + "\nAPPLICANT");
+                } else {
+                    holder.txtApplication.setText("          " + Integer.toString(pet.applicantId.size()) + " APPLICANTS");
                 }
-            });
+                holder.txtApplication.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(view.getContext(), ApplicantsActivity.class);
+                        intent.putExtra("pet_id", pet.getPetId());
+                        view.getContext().startActivity(intent);
+                    }
+                });
+            } else {
+                holder.txtApplication.setText("");
+            }
         }
         else {
-            holder.txtApplication.setText("");
+            holder.txtApplication.setText("APPROVED");
         }
     }
 

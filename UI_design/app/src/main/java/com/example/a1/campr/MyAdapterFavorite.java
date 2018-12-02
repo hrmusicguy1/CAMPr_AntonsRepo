@@ -1,6 +1,10 @@
 package com.example.a1.campr;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.icu.text.RelativeDateTimeFormatter;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -83,8 +87,26 @@ public class MyAdapterFavorite extends RecyclerView.Adapter<MyAdapterFavorite.Vi
         holder.txtFooter.setText(pet.getGender());
         holder.txtId.setText(pet.getPetId());
         holder.petPicture.setImageBitmap(pet.getPetPic());
-        if (pet.applicantId.size() > 0 && pet.applicantId.containsKey(Integer.toString(LoginActivity.currentUser))) {
+        /*if (pet.applicantId.size() > 0 && pet.applicantId.containsKey(Integer.toString(LoginActivity.currentUser))) {
+            holder.txtAplication.setTextColor(Color.parseColor("#ff669900"));
             holder.txtAplication.setText("APPLIED");
+        }*/
+        if(LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).appliedPets.containsKey(pet.getPetId())) {
+            if (LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).appliedPets.get(pet.getPetId()).equals("approved")) {
+                holder.txtAplication.setTextColor(Color.parseColor("#ff669900"));
+                holder.txtAplication.setText("APPROVED");
+            }
+            else if (LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).appliedPets.get(pet.getPetId()).equals("declined")) {
+                holder.txtAplication.setTextColor(Color.RED);
+                holder.txtAplication.setText("DECLINED");
+            }
+            else if (LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).appliedPets.get(pet.getPetId()).equals("applied")) {
+                holder.txtAplication.setTextColor(Color.parseColor("#ff669900"));
+                holder.txtAplication.setText("APPLIED");
+            }
+        }
+        else {
+            holder.txtAplication.setText("");
         }
     }
 
