@@ -17,7 +17,12 @@ public class User {
     public ArrayList<Pets> listedPets; //lister
     public Set<String> swipedPets;     //adopter
     public HashMap<String, String> appliedPets; //adopter   petID - (applied, approved, declined)
-    //public ArrayList<Pair<String, String>> myApplicants;
+
+    public String pSpecies;
+    public String pGender;
+    public String pFee;
+    public String pAge;
+
 
     public User(String mID) {
         userID = mID;
@@ -26,6 +31,9 @@ public class User {
         listedPets = new ArrayList<Pets>();
         swipedPets = new HashSet<>();
         appliedPets = new HashMap<>();
-        //myApplicants = new ArrayList<Pair<String, String>>();
+        pSpecies = "All";
+        pGender = "All";
+        pFee = "All";
+        pAge = "All";
     }
 }

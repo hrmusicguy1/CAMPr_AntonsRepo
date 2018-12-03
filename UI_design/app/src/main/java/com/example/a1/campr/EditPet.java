@@ -9,8 +9,10 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -20,6 +22,14 @@ public class EditPet extends AppCompatActivity {
     private Bitmap profile_pic;
     private Pets pet;
     private TextView name, gender, info;
+    Spinner spinner_species;
+    Spinner spinner_age;
+    Spinner spinner_adoption_fee;
+    Spinner spinner_gender;
+    ArrayAdapter<CharSequence> adapter_species;
+    ArrayAdapter<CharSequence> adapter_age;
+    ArrayAdapter<CharSequence> adapter_gender;
+    ArrayAdapter<CharSequence> adapter_adoption_fee;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +39,26 @@ public class EditPet extends AppCompatActivity {
         ImageView edit = findViewById(R.id.edit_pet);
         edit.setVisibility(View.GONE);
 
+        spinner_species = findViewById(R.id.sp_species);
+        adapter_species = ArrayAdapter.createFromResource(getBaseContext(),R.array.add_species,android.R.layout.simple_spinner_item);
+        adapter_species.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_species.setAdapter(adapter_species);
+
+        spinner_gender = findViewById(R.id.sp_gender);
+        adapter_gender = ArrayAdapter.createFromResource(getBaseContext(),R.array.add_gender,android.R.layout.simple_spinner_item);
+        adapter_gender.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_gender.setAdapter(adapter_gender);
+
+        spinner_age = findViewById(R.id.sp_age);
+        adapter_age = ArrayAdapter.createFromResource(getBaseContext(),R.array.add_age,android.R.layout.simple_spinner_item);
+        adapter_age.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_age.setAdapter(adapter_age);
+
+        spinner_adoption_fee = findViewById(R.id.sp_fee);
+        adapter_adoption_fee = ArrayAdapter.createFromResource(getBaseContext(),R.array.add_fee,android.R.layout.simple_spinner_item);
+        adapter_adoption_fee.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner_adoption_fee.setAdapter(adapter_adoption_fee);
+
         pet = getIntent().getParcelableExtra("parcel_data");
         pet = PetsFragment.myPets.get(pet.getPetId());
         ImageView image = findViewById(R.id.imageView);
@@ -36,7 +66,8 @@ public class EditPet extends AppCompatActivity {
         name = findViewById(R.id.textView);
         name.setText(pet.getName());
         gender = findViewById(R.id.textView2);
-        gender.setText(pet.getGender());
+        //gender.setText(pet.getGender());
+        gender.setVisibility(View.GONE);
         info = findViewById(R.id.textView3);
         info.setText(pet.getInfo());
         profile_pic = pet.getPetPic();
@@ -66,7 +97,26 @@ public class EditPet extends AppCompatActivity {
             public void onClick(View view) {
                 PetsFragment.input.remove(pet);
                 pet.setName(name.getText().toString());
-                pet.setGender(gender.getText().toString());
+                pet.species = spinner_species.getSelectedItem().toString();
+                pet.setGender(spinner_gender.getSelectedItem().toString());
+                int age;
+                if(spinner_age.getSelectedItem().toString().equals("<1")) {
+                    age = 0;
+                }
+                else if(spinner_age.getSelectedItem().toString().equals("1 - 3")) {
+                    age = 3;
+                }
+                else if(spinner_age.getSelectedItem().toString().equals("4 - 7")) {
+                    age = 7;
+                }
+                else if(spinner_age.getSelectedItem().toString().equals("8 - 10")) {
+                    age = 10;
+                }
+                else {
+                    age = 100;
+                }
+                pet.age = age;
+                pet.fee = spinner_adoption_fee.getSelectedItem().toString();
                 pet.setInfo(info.getText().toString());
                 pet.setPetPic(profile_pic);
 

@@ -8,11 +8,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 
 public class ListerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,7 @@ public class ListerActivity extends AppCompatActivity implements NavigationView.
                     new PetsFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_pets);
         }
+
     }
 
     @Override
@@ -43,10 +48,6 @@ public class ListerActivity extends AppCompatActivity implements NavigationView.
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ProfileFragment()).commit();
                 break;
-            case R.id.nav_application:
-                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        //new ApplicationFragment()).commit();
-                break;
             case R.id.nav_pets:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new PetsFragment()).commit();
@@ -54,12 +55,16 @@ public class ListerActivity extends AppCompatActivity implements NavigationView.
             case R.id.nav_addnew:
                 /*getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AddnewFragment()).commit();*/
-                Intent intent = new Intent(this, AddNewActivity.class);
+                intent = new Intent(this, AddNewActivity.class);
                 startActivity(intent);
                 break;
             case R.id.nav_signout:
-                Intent intent2 = new Intent(ListerActivity.this, LoginActivity.class);
-                startActivity(intent2);
+                intent = new Intent(ListerActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.switch_lister:
+                intent = new Intent(this, workmodeActivity.class);
+                startActivity(intent);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

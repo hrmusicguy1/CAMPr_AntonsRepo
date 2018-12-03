@@ -10,6 +10,10 @@
         <item android:id="@+id/nav_preference"
             android:icon="@drawable/ic_preference"
             android:title="Preference"/>
+        <item
+            android:id="@+id/nav_browse"
+            android:icon="@android:drawable/ic_menu_gallery"
+            android:title="Browse" />
         <item android:id="@+id/nav_favorite"
             android:icon="@drawable/ic_favorite"
             android:title="Favorite"/>
@@ -19,6 +23,10 @@
         <!--<item android:id="@+id/nav_addnew"-->
             <!--android:icon="@drawable/ic_addnew"-->
             <!--android:title="Add new"/>-->
+        <item
+            android:id="@+id/switch_adopter"
+            android:icon="@android:drawable/ic_popup_sync"
+            android:title="Switch accounts" />
         <item android:id="@+id/nav_signout"
             android:icon="@drawable/ic_signout"
             android:title="Sign out"/>

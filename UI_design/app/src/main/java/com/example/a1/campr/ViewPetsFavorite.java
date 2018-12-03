@@ -6,10 +6,12 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.util.Pair;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,6 +25,23 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
         ImageView edit = findViewById(R.id.edit_pet);
         edit.setVisibility(View.GONE);
 
+        Spinner spinner_species = findViewById(R.id.sp_species);
+        spinner_species.setVisibility(View.GONE);
+        Spinner spinner_age = findViewById(R.id.sp_age);
+        spinner_age.setVisibility(View.GONE);
+        Spinner spinner_adoption_fee = findViewById(R.id.sp_fee);
+        spinner_adoption_fee.setVisibility(View.GONE);
+        Spinner spinner_gender = findViewById(R.id.sp_gender);
+        spinner_gender.setVisibility(View.GONE);
+        TextView sp_species = findViewById(R.id.spin_species);
+        sp_species.setVisibility(View.GONE);
+        TextView sp_gender = findViewById(R.id.spin_gender);
+        sp_gender.setVisibility(View.GONE);
+        TextView sp_age = findViewById(R.id.spin_age);
+        sp_age.setVisibility(View.GONE);
+        TextView sp_fee = findViewById(R.id.spin_fee);
+        sp_fee.setVisibility(View.GONE);
+
         Pets pet = getIntent().getParcelableExtra("parcel_data");
         pet = AdopterActivity.myChosenPets.get(pet.getPetId());
         name = findViewById(R.id.textView);
@@ -32,7 +51,10 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
         gender = findViewById(R.id.textView2);
         gender.setInputType(InputType.TYPE_NULL);
         gender.setBackground(null);
-        gender.setText(pet.getGender());
+        gender.setSingleLine(false);
+        gender.setGravity(Gravity.CENTER);
+        String s = pet.getGender() + "\n" + pet.city;
+        gender.setText(s);
         info = findViewById(R.id.textView3);
         info.setInputType(InputType.TYPE_NULL);
         info.setBackground(null);
@@ -69,8 +91,12 @@ public class ViewPetsFavorite extends AppCompatActivity implements ApplyMsgDialo
         else {
             if(applied_value.equals("APPROVED")) {
                 int owner = Integer.parseInt(pet.getOwnerId());
+                //info.setSingleLine(false);
+                //info.setText(info.getText().toString() + "\n\n" + LoginActivity.myData.dataUsers.get(owner).userContact);
+                String ss = gender.getText().toString() + "\n" + info.getText().toString();
+                gender.setText(ss);
                 info.setSingleLine(false);
-                info.setText(info.getText().toString() + "\n\n" + LoginActivity.myData.dataUsers.get(owner).userContact);
+                info.setText(LoginActivity.myData.dataUsers.get(owner).userContact);
             }
 
             Button remove = findViewById(R.id.button);

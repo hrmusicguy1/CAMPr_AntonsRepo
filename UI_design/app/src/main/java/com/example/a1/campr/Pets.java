@@ -19,8 +19,14 @@ public class Pets implements Parcelable {
     public HashMap<String, String> applicantId; //applicantID, applicationMessage
     public boolean approved;
     public boolean adopted;
+    public String approvedId;
 
-    public Pets(String mName, String mGender, String mInfo, String mId, String mOwnerId, Bitmap mPic) {
+    public String species;
+    public int age;
+    public String fee;
+    public String city;
+
+    public Pets(String mName, String mGender, String mInfo, String mId, String mOwnerId, Bitmap mPic, String mSpecies, int mAge, String mFee, String mCity) {
         name = mName;
         gender = mGender;
         info = mInfo;
@@ -30,6 +36,12 @@ public class Pets implements Parcelable {
         applicantId = new HashMap<String, String>();
         approved = false;
         adopted = false;
+        approvedId = "";
+
+        species = mSpecies;
+        age = mAge;
+        fee = mFee;
+        city = mCity;
     }
 
     public Pets(Parcel in) {

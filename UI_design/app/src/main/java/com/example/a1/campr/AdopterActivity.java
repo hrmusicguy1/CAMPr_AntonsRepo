@@ -12,6 +12,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -24,7 +25,7 @@ public class AdopterActivity extends AppCompatActivity implements NavigationView
     //private ArrayAdapter arrayAdapter;
     private CardsStackAdapter arrayAdapter;
     private DrawerLayout drawer;
-    //private ArrayList<Pets> petCards;
+    private Intent intent;
     public static ArrayList<Pets> adoptionPets = new ArrayList<Pets>();
     public static HashMap<String, Pets> myChosenPets = new HashMap<String, Pets>();
     private Pets pet;
@@ -126,19 +127,22 @@ public class AdopterActivity extends AppCompatActivity implements NavigationView
                         new PreferenceFragment()).commit();
                 view.setVisibility(View.GONE);
                 break;
+            case R.id.nav_browse:
+                intent = new Intent(this, AdopterActivity.class);
+                finish();
+                startActivity(intent);
+                break;
             case R.id.nav_favorite:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new FavoriteFragment()).commit();
                 view.setVisibility(View.GONE);
                 break;
-            case R.id.nav_addnew:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                        new AddnewFragment()).commit();
-//                break;
-                intent = new Intent(this, AddNewActivity.class);
-                startActivity(intent);
             case R.id.nav_signout:
                 intent = new Intent(AdopterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.switch_adopter:
+                intent = new Intent(AdopterActivity.this, workmodeActivity.class);
                 startActivity(intent);
                 break;
         }

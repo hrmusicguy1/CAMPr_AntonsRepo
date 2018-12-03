@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/profile">
 
     <TextView
         android:id="@+id/species"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="98dp"
         android:layout_marginEnd="255dp"
         android:layout_marginRight="255dp"
-        android:layout_marginTop="98dp"
         android:text="Species"
         android:textSize="24sp"
         app:fontFamily="@font/andika" />
@@ -28,21 +30,21 @@
         app:fontFamily="@font/andika" />
 
     <TextView
-        android:id="@+id/breed"
+        android:id="@+id/gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="158dp"
         android:layout_marginEnd="255dp"
         android:layout_marginRight="255dp"
-        android:layout_marginTop="158dp"
-        android:text="Breed"
+        android:text="Gender"
         android:textSize="24sp"
         app:fontFamily="@font/andika" />
 
     <Spinner
-        android:id="@+id/spinner_breed"
+        android:id="@+id/spinner_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -55,12 +57,12 @@
         android:id="@+id/age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="218dp"
         android:layout_marginEnd="255dp"
         android:layout_marginRight="255dp"
-        android:layout_marginTop="218dp"
         android:text="Age"
         android:textSize="24sp"
         app:fontFamily="@font/andika" />
@@ -76,75 +78,41 @@
         app:fontFamily="@font/andika" />
 
     <TextView
-        android:id="@+id/color"
+        android:id="@+id/City"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="255dp"
-        android:layout_marginRight="255dp"
-        android:layout_marginTop="278dp"
-        android:text="Color"
+        android:layout_marginTop="339dp"
+        android:layout_marginEnd="252dp"
+        android:layout_marginRight="252dp"
+        android:text="City"
         android:textSize="24sp"
         app:fontFamily="@font/andika" />
 
     <Spinner
-        android:id="@+id/spinner_color"
+        android:id="@+id/spinner_fee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="292dp"
-        app:fontFamily="@font/andika" />
-
-    <TextView
-        android:id="@+id/size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="255dp"
-        android:layout_marginRight="255dp"
-        android:layout_marginTop="338dp"
-        android:text="Size"
-        android:textSize="24sp"
-        app:fontFamily="@font/andika" />
-
-    <Spinner
-        android:id="@+id/spinner_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="287dp"
         app:fontFamily="@font/andika" />
 
     <TextView
         android:id="@+id/adoption_fee"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="215dp"
-        android:layout_marginRight="215dp"
-        android:layout_marginTop="398dp"
-        android:text="Adoption Fee"
+        android:layout_marginTop="277dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginRight="256dp"
+        android:text="Fee"
         android:textSize="24sp"
-        app:fontFamily="@font/andika" />
-
-    <Spinner
-        android:id="@+id/spinner_adoption_fee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="215dp"
-        android:layout_marginTop="412dp"
         app:fontFamily="@font/andika" />
 
     <TextView
@@ -154,21 +122,12 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginLeft="13dp"
-        android:layout_marginTop="35dp"
-        android:text="Please edit your preference here"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="75dp"
+        android:layout_marginTop="40dp"
+        android:text="Selet your preferences"
         android:textSize="24sp"
         app:fontFamily="@font/andika" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="98dp"
-        android:text="Save" />
 
     <TextView
         android:id="@+id/back"
@@ -181,6 +140,22 @@
         android:text="Go Back"
         android:textColor="#001fcc"
         android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="131dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/City"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="173dp"
+        android:layout_marginLeft="173dp"
+        android:layout_marginTop="338dp"
+        android:layout_marginBottom="-1dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="San Diego" />
 
 
 </RelativeLayout>

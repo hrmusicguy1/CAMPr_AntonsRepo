@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class ViewPetsActivity extends AppCompatActivity {
@@ -16,7 +18,26 @@ public class ViewPetsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_pets);
 
+        Spinner spinner_species = findViewById(R.id.sp_species);
+        spinner_species.setVisibility(View.GONE);
+        Spinner spinner_age = findViewById(R.id.sp_age);
+        spinner_age.setVisibility(View.GONE);
+        Spinner spinner_adoption_fee = findViewById(R.id.sp_fee);
+        spinner_adoption_fee.setVisibility(View.GONE);
+        Spinner spinner_gender = findViewById(R.id.sp_gender);
+        spinner_gender.setVisibility(View.GONE);
+        TextView sp_species = findViewById(R.id.spin_species);
+        sp_species.setVisibility(View.GONE);
+        TextView sp_gender = findViewById(R.id.spin_gender);
+        sp_gender.setVisibility(View.GONE);
+        TextView sp_age = findViewById(R.id.spin_age);
+        sp_age.setVisibility(View.GONE);
+        TextView sp_fee = findViewById(R.id.spin_fee);
+        sp_fee.setVisibility(View.GONE);
+
+
         Pets pet = getIntent().getParcelableExtra("parcel_data");
+        pet = PetsFragment.myPets.get(pet.getPetId());
         name = findViewById(R.id.textView);
         name.setInputType(InputType.TYPE_NULL);
         name.setBackground(null);
@@ -24,10 +45,14 @@ public class ViewPetsActivity extends AppCompatActivity {
         gender = findViewById(R.id.textView2);
         gender.setInputType(InputType.TYPE_NULL);
         gender.setBackground(null);
-        gender.setText(pet.getGender());
+        gender.setSingleLine(false);
+        gender.setGravity(Gravity.CENTER);
+        String s = pet.getGender() + "\n" + pet.city;
+        gender.setText(s);
         info = findViewById(R.id.textView3);
         info.setInputType(InputType.TYPE_NULL);
         info.setBackground(null);
+        info.setSingleLine(false);
         info.setText(pet.getInfo());
         ImageView imageView = findViewById(R.id.imageView);
         pet = PetsFragment.myPets.get(pet.getPetId());

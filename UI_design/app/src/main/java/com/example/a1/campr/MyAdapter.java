@@ -99,21 +99,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 } else {
                     holder.txtApplication.setText("          " + Integer.toString(pet.applicantId.size()) + " APPLICANTS");
                 }
-                holder.txtApplication.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(view.getContext(), ApplicantsActivity.class);
-                        intent.putExtra("pet_id", pet.getPetId());
-                        view.getContext().startActivity(intent);
-                    }
-                });
-            } else {
+            }
+            else {
                 holder.txtApplication.setText("");
             }
         }
         else {
             holder.txtApplication.setText("APPROVED");
         }
+
+        holder.txtApplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView apprv = view.findViewById(R.id.applicants);
+                String apr_value = apprv.getText().toString();
+                Intent intent;
+                if(apr_value.equals("APPROVED")) {
+                    intent = new Intent(view.getContext(), ViewApplicantActivity.class);
+                    intent.putExtra("user_id", pet.approvedId);
+                    intent.putExtra("approved", apr_value);
+                }
+                else {
+                    intent = new Intent(view.getContext(), ApplicantsActivity.class);
+                    intent.putExtra("pet_id", pet.getPetId());
+                }
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
