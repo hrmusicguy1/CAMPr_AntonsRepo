@@ -32,14 +32,23 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 TextView email_account = findViewById(R.id.emial);
                 String email = email_account.getText().toString();
+                TextView pass = findViewById(R.id.password);
+                String passw = pass.getText().toString();
+
                 if(email.equals("hsociety@gmail.com")) {
                     test1();
                     Intent intent = new Intent(LoginActivity.this, workmodeActivity.class);
                     startActivity(intent);
                     finish();
                 }
-                else if(email.equals("klalova@ucsd.edu")) {
+                else if(email.equals("klalova@ucsd.edu") && !passw.equals("223456")) {
                     test2();
+                    Intent intent = new Intent(LoginActivity.this, workmodeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if(email.equals("klalova@ucsd.edu") && passw.equals("223456")){
+                    testKalina2();
                     Intent intent = new Intent(LoginActivity.this, workmodeActivity.class);
                     startActivity(intent);
                     finish();
@@ -277,7 +286,70 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public void testKalina2() {
+        clearTest();
+        runTest();
+        currentUser = 2;
 
+        Bitmap pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet1);
+        Pets kitty = new Pets("Kitty", "Female", "Just a cat", "p1", "0", pic, "Cats", 0, "Free", "San Diego");
+
+        User user = LoginActivity.myData.dataUsers.get(2);
+        //Bitmap pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet1);
+        //user.chosenPets.add(new Pets("Kitty", "Female", "Just a cat", "p1", "0", pic, "Cats", 0, "Free", "San Diego"));
+        user.chosenPets.add(kitty);
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet2);
+        user.chosenPets.add(new Pets("Fugly", "Female", "Ugliest dog alive", "p2", "0", pic,"Dogs", 2, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet3);
+        user.chosenPets.add(new Pets("Mr. Coon", "Male", "Sixth college student", "p3", "0", pic, "Other", 5, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet6);
+        user.chosenPets.add(new Pets("Alarm clock", "Male", "Cocky bastard", "p6", "0", pic, "Other", 9, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.rep3);
+        user.listedPets.add(new Pets("Camile", "Female", "Once you adopt me you'll never see me again", "p10", "0", pic, "Reptiles", 3, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.cat2);
+        user.chosenPets.add(new Pets("Toothless", "Female", "Part-time dragon", "p25", "0", pic, "Cats", 4, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.cat5);
+        user.chosenPets.add(new Pets("Levi", "Male", "Levitates towards food", "p27", "0", pic, "Cats", 8, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.cat6);
+        user.chosenPets.add(new Pets("Blinky", "Male", "Does not blink", "p28", "0", pic, "Cats", 10, "Free", "San Diego"));
+
+        pic = BitmapFactory.decodeResource(getResources(), R.drawable.dog5);
+        user.chosenPets.add(new Pets("Bubbles", "Male", "Loves baths", "p23", "0", pic, "Dogs", 4, "Free", "San Diego"));
+
+        user.swipedPets.add("p1");
+        user.swipedPets.add("p2");
+        user.swipedPets.add("p3");
+        user.swipedPets.add("p6");
+        user.swipedPets.add("p10");
+        user.swipedPets.add("p25");
+        user.swipedPets.add("p27");
+        user.swipedPets.add("p28");
+        user.swipedPets.add("p23");
+        AdopterActivity.adoptionPets.clear();
+        for(User u : myData.dataUsers) {
+            if (u.listedPets.size() > 0) {
+                for (Pets p : u.listedPets) {
+                    if (LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).swipedPets.contains(p.getPetId())) {
+                        continue;
+                    }
+                    AdopterActivity.adoptionPets.add(p);
+                }
+            }
+        }
+
+        user.appliedPets.put("p1", "approved");
+        user.appliedPets.put("p2", "declined");
+        user.appliedPets.put("p3", "applied");
+        AdopterActivity.myChosenPets.put("p1", kitty);
+
+    }
 
     @Override
     public void onBackPressed() {
