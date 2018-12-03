@@ -295,15 +295,16 @@ public class LoginActivity extends AppCompatActivity {
         Pets kitty = new Pets("Kitty", "Female", "Just a cat", "p1", "0", pic, "Cats", 0, "Free", "San Diego");
 
         User user = LoginActivity.myData.dataUsers.get(2);
-        //Bitmap pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet1);
-        //user.chosenPets.add(new Pets("Kitty", "Female", "Just a cat", "p1", "0", pic, "Cats", 0, "Free", "San Diego"));
+
         user.chosenPets.add(kitty);
 
         pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet2);
-        user.chosenPets.add(new Pets("Fugly", "Female", "Ugliest dog alive", "p2", "0", pic,"Dogs", 2, "Free", "San Diego"));
+        Pets fugly = new Pets("Fugly", "Female", "Ugliest dog alive", "p2", "0", pic,"Dogs", 2, "Free", "San Diego");
+        user.chosenPets.add(fugly);
 
         pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet3);
-        user.chosenPets.add(new Pets("Mr. Coon", "Male", "Sixth college student", "p3", "0", pic, "Other", 5, "Free", "San Diego"));
+        Pets coon = new Pets("Mr. Coon", "Male", "Sixth college student", "p3", "0", pic, "Other", 5, "Free", "San Diego");
+        user.chosenPets.add(coon);
 
         pic = BitmapFactory.decodeResource(getResources(), R.drawable.pet6);
         user.chosenPets.add(new Pets("Alarm clock", "Male", "Cocky bastard", "p6", "0", pic, "Other", 9, "Free", "San Diego"));
@@ -348,6 +349,8 @@ public class LoginActivity extends AppCompatActivity {
         user.appliedPets.put("p2", "declined");
         user.appliedPets.put("p3", "applied");
         AdopterActivity.myChosenPets.put("p1", kitty);
+        AdopterActivity.myChosenPets.put("p2", fugly);
+        AdopterActivity.myChosenPets.put("p3", coon);
 
     }
 
