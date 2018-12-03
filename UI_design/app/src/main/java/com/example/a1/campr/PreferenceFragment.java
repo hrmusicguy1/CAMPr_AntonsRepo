@@ -139,9 +139,9 @@ public class PreferenceFragment extends Fragment {
     public void filterPreferences(String mSpecies, String mGender, String mAge, String mFee, String mCity) {
         AdopterActivity.adoptionPets.clear();
 
-        int age=100;
+        int age=-100;
         if(mAge.equals("<1")) {
-            age = -1;
+            age = -100;
         }
         else if(mAge.equals("1 - 3")) {
             age = 3;
@@ -154,6 +154,9 @@ public class PreferenceFragment extends Fragment {
         }
         else if(mAge.equals("10+")) {
             age = 100;
+        }
+        else {
+            age = -200;
         }
 
         for(User u : LoginActivity.myData.dataUsers) {
@@ -170,7 +173,7 @@ public class PreferenceFragment extends Fragment {
                     if (!LoginActivity.myData.dataUsers.get(LoginActivity.currentUser).swipedPets.contains(p.getPetId())
                             && (p.species.equals(mSpecies) || mSpecies.equals("All"))
                             && (p.getGender().equals(mGender) || mGender.equals("All"))
-                            //&& (((p.age >= age-3) && (p.age <= age)) || (age==100 && p.age>10) ||(age==-1 && p.age==0) )
+                            && (((p.age >= age-3) && (p.age <= age)) || (age==100 && p.age>10) ||(age==-100 && p.age==0) || (age==-200) )
                             && (p.fee.equals(mFee) || mFee.equals("All"))
                             && (p.city.equals(mCity))) {
                         AdopterActivity.adoptionPets.add(p);
